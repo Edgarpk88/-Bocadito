@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web NFC</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .info-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <button id="searchButton">Buscar Cliente</button>
+        <input type="text" id="searchName" placeholder="Nombre">
+        <input type="email" id="searchEmail" placeholder="Email">
+        <input type="tel" id="searchPhone" placeholder="Teléfono">
+        <button id="searchOkButton" disabled>OK</button>
+    </div>
+
+    <div class="form-container">
+        <button id="registerButton">Registrar Cliente</button>
+        <input type="text" id="registerName" placeholder="Nombre">
+        <input type="email" id="registerEmail" placeholder="Email">
+        <input type="tel" id="registerPhone" placeholder="Teléfono">
+        <input type="text" id="registerAddress" placeholder="Dirección">
+        <input type="number" id="registerDiscount" placeholder="Descuento Aplicado">
+        <button id="registerOkButton">OK</button>
+    </div>
+
+    <div class="info-container" id="infoContainer">
+        <h3>Información del Cliente</h3>
+        <p><strong>Nombre:</strong> <span id="clientName"></span></p>
+        <p><strong>Teléfono:</strong> <span id="clientPhone"></span></p>
+        <p><strong>Email:</strong> <span id="clientEmail"></span></p>
+        <p><strong>Dirección:</strong> <span id="clientAddress"></span></p>
+        <p><strong>Clasificación Cliente:</strong> <span id="clientClassification"></span></p>
+        <p><strong>Puntos Cliente:</strong> <span id="clientPoints"></span></p>
+        <p><strong>Descuento Aplicado:</strong> <span id="clientDiscount"></span></p>
+        <p><strong>Número de pedidos:</strong> <span id="clientOrders"></span></p>
+        <p><strong>Pedidos Anteriores:</strong> <span id="clientPreviousOrders"></span></p>
+        <p><strong>Última Modificación:</strong> <span id="clientLastModified"></span></p>
+        <p><strong>Fecha Creación:</strong> <span id="clientCreationDate"></span></p>
+        <p><strong>Número de Serie:</strong> <span id="clientSerialNumber"></span></p>
+        <p><strong>Número Cliente:</strong> <span id="clientCustomerNumber"></span></p>
+        <p><strong>Contraseña:</strong> <span id="clientPassword"></span></p>
+        <button id="registerChipButton" disabled>Registrar Chip</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
