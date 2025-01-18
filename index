@@ -38,7 +38,6 @@
         <input type="number" id="registerDiscount" placeholder="Descuento Aplicado">
         <button id="registerOkButton">OK</button>
     </div>
-
     <div class="info-container" id="infoContainer">
         <h3>Información del Cliente</h3>
         <p><strong>Nombre:</strong> <span id="clientName"></span></p>
