@@ -1,0 +1,124 @@
+document.getElementById('searchButton').addEventListener('click', () => {
+    document.getElementById('searchOkButton').disabled = false;
+});
+
+document.getElementById('searchOkButton').addEventListener('click', async () => {
+    const name = document.getElementById('searchName').value;
+    const email = document.getElementById('searchEmail').value;
+    const phone = document.getElementById('searchPhone').value;
+
+    if (!name || !email || !phone) {
+        alert('Por favor, complete todos los campos');
+        return;
+    }
+
+    try {
+        const url = new URL('https://neurofay.app.n8n.cloud/webhook/863d7e4b-2454-4028-b2b7-66cc79b2c25b');
+        url.searchParams.append('action', 'Buscar Cliente');
+        url.searchParams.append('name', name);
+        url.searchParams.append('email', email);
+        url.searchParams.append('phone', phone);
+
+        const response = await fetch(url, {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al buscar cliente');
+        }
+
+        const data = await response.json();
+        updateClientInfo(data);
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
+document.getElementById('registerButton').addEventListener('click', () => {
+    document.getElementById('registerOkButton').disabled = false;
+});
+
+document.getElementById('registerOkButton').addEventListener('click', async () => {
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const phone = document.getElementById('registerPhone').value;
+    const address = document.getElementById('registerAddress').value;
+    const discount = document.getElementById('registerDiscount').value;
+
+    if (!name || !email || !phone || !address || !discount) {
+        alert('Por favor, complete todos los campos');
+        return;
+    }
+
+    try {
+        const url = new URL('https://neurofay.app.n8n.cloud/webhook/863d7e4b-2454-4028-b2b7-66cc79b2c25b');
+        url.searchParams.append('action', 'Registrar Cliente');
+        url.searchParams.append('name', name);
+        url.searchParams.append('email', email);
+        url.searchParams.append('phone', phone);
+        url.searchParams.append('address', address);
+        url.searchParams.append('discount', discount);
+
+        const response = await fetch(url, {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al registrar cliente');
+        }
+
+        alert('Cliente registrado exitosamente');
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
+document.getElementById('registerChipButton').addEventListener('click', async () => {
+    const name = document.getElementById('searchName').value;
+    const email = document.getElementById('searchEmail').value;
+    const phone = document.getElementById('searchPhone').value;
+
+    if (!name || !email || !phone) {
+        alert('Por favor, complete los campos de búsqueda antes de registrar el chip');
+        return;
+    }
+
+    try {
+        const url = new URL('https://neurofay.app.n8n.cloud/webhook/863d7e4b-2454-4028-b2b7-66cc79b2c25b');
+        url.searchParams.append('action', 'Registrar Chip');
+        url.searchParams.append('name', name);
+        url.searchParams.append('email', email);
+        url.searchParams.append('phone', phone);
+
+        const response = await fetch(url, {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al registrar chip');
+        }
+
+        alert('Chip registrado exitosamente');
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
+function updateClientInfo(data) {
+    document.getElementById('clientName').textContent = data.name;
+    document.getElementById('clientPhone').textContent = data.phone;
+    document.getElementById('clientEmail').textContent = data.email;
+    document.getElementById('clientAddress').textContent = data.address;
+    document.getElementById('clientClassification').textContent = data.classification;
+    document.getElementById('clientPoints').textContent = data.points;
+    document.getElementById('clientDiscount').textContent = data.discount;
+    document.getElementById('clientOrders').textContent = data.orders;
+    document.getElementById('clientPreviousOrders').textContent = data.previousOrders;
+    document.getElementById('clientLastModified').textContent = data.lastModified;
+    document.getElementById('clientCreationDate').textContent = data.creationDate;
+    document.getElementById('clientSerialNumber').textContent = data.serialNumber;
+    document.getElementById('clientCustomerNumber').textContent = data.customerNumber;
+    document.getElementById('clientPassword').textContent = data.password;
+
+    document.getElementById('registerChipButton').disabled = false;
+}
